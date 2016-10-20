@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="GB2312"?>
+<hqserver>
+	<data type="sort" description="">
+		<param name="SecurityID" value="34" sort="Y" desc="合约编码" />
+		<param name="UnderlyingSecurityID" value="24" sort="Y" desc="标的证券代码" />
+
+		<param name="ExercisePrice" value="35" sort="Y" desc="行权价" />
+		<param name="uppercent" value="1" sort="Y" desc="涨跌幅" />
+		<param name="TradePrice" value="2" sort="Y" desc="最新价" />
+		<param name="up" value="3" sort="Y" desc="涨跌" />
+		<param name="TradeVolume" value="6" sort="Y" desc="总量" />
+
+		<param name="OpenPrice" value="9" sort="Y" desc="今开" />
+
+		<param name="HighPrice" value="10" sort="Y" desc="最高" />
+		<param name="LowPrice" value="11" sort="Y" desc="最低" />
+
+		<param name="PreSettlPrice" value="12" sort="Y" desc="昨结" />
+		<param name="TotalValueTraded" value="14" sort="Y" desc="成交金额" />
+
+		<param name="average" value="17" sort="Y" desc="均价" />
+
+		<param name="inside" value="18" sort="Y" desc="内盘" />
+		<param name="outside" value="19" sort="Y" desc="外盘" />
+
+		<param name="UnderlyingSymbol" value="22" sort="Y" desc="标的证券名称" />
+
+		<param name="thedeal" value="25" sort="Y" desc="现量" />
+		<param name="SettlPrice" value="36" sort="Y" desc="今日结算价" />
+		<param name="ExpireDate" value="37" sort="Y" desc="到期" />
+		<param name="iPC" value="38" sort="Y" desc="合约类型（1认购   或者  0认沽）" />
+		<param name="ContractSymbol" value="39" sort="Y" desc="期权合约名称" />
+		<param name="leixing" value="41" sort="Y" desc="类型" />
+
+		<param name="ContractMultiplierUnit" value="42" sort="Y" desc="合约单位" />
+		<param name="zhuangtai" value="43" sort="Y" desc="状态" />
+
+		<param name="TotalLongPosition" value="44" sort="Y" desc="持仓" />
+		<param name="LeaveDay" value="46" sort="Y" desc="剩余天数" />
+		<param name="cangcha" value="45" sort="Y" desc="仓差" />
+
+		<param name="BuyPrice1" value="51" sort="Y" desc="买一价" />
+		<param name="BuyPrice2" value="52" sort="Y" desc="买二价" />
+		<param name="BuyPrice3" value="53" sort="Y" desc="买三价" />
+		<param name="BuyPrice4" value="54" sort="Y" desc="买四价" />
+		<param name="BuyPrice5" value="55" sort="Y" desc="买五价" />
+
+		<param name="SellPrice1" value="56" sort="Y" desc="卖一价" />
+		<param name="SellPrice2" value="57" sort="Y" desc="卖二价" />
+		<param name="SellPrice3" value="58" sort="Y" desc="卖三价" />
+		<param name="SellPrice4" value="59" sort="Y" desc="卖四价" />
+		<param name="SellPrice5" value="60" sort="Y" desc="卖五价" />
+
+		<param name="BuyVolume1" value="61" sort="Y" desc="买一量" />
+		<param name="BuyVolume2" value="62" sort="Y" desc="买二量" />
+		<param name="BuyVolume3" value="63" sort="Y" desc="买三量" />
+		<param name="BuyVolume4" value="64" sort="Y" desc="买四量" />
+		<param name="BuyVolume5" value="65" sort="Y" desc="买五量" />
+
+		<param name="SellVolume1" value="66" sort="Y" desc="卖一量" />
+		<param name="SellVolume2" value="67" sort="Y" desc="卖二量" />
+		<param name="SellVolume3" value="68" sort="Y" desc="卖三量" />
+		<param name="SellVolume4" value="69" sort="Y" desc="卖四量" />
+		<param name="SellVolume5" value="70" sort="Y" desc="卖五量" />
+
+	</data>
+</hqserver>
+
+

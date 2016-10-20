@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GB2312"?>
+<system>
+	<category name="general" description="一般配置">
+		<item name="isDebug" value="false" description="是否处于调试状态" />
+		<item name="timezone" value="GMT+8" description="默认时区" />
+	</category>
+
+	<category name="thinkconv" description="转码机服务器配置">
+		<item name="host" value="192.168.3.219:26007" description="转码机地址及端口连接地址" />
+		<item name="pushhost" value="192.168.3.219:26008" description="转码机地址及推送端口连接地址" />
+		<item name="timeout" value="120000" description="连接超时设置（毫秒）" />
+	</category>
+
+	<category name="receiver" description="推送接收端"><!--接受转码机网关推送来的数据 -->
+		<item name="mode" value="tcp" description="tcp|udp|none,三种选择，tcp和udp表示接受的推送协议，none表示不选择推送" />
+		<item name="port" value="9097" description="UPD监听端口" />
+		<item name="allowedip" value="192.168.1.9|192.168.1.204|127.0.0.1" description="UDP允许的IP" />
+	</category>
+	
+	<category name="jetty" description="服务器配置">
+		<item name="port" value="9097" description="服务器监听的端口" />
+		<item name="maxidletime" value="180000" description="连接最大空闲时间" />
+		<item name="minthreads" value="10" description="初始化线程池" />
+		<item name="maxthreads" value="100" description="最大线程池" />
+		<item name="webroot" value="./WebRoot" description="web根目录路径" />
+		<item name="confpath" value="./bin/jetty-web.xml" description="web.xml文件路径" />
+	</category>
+	
+
+	<!-- 没有使用的配置 -->
+	<category name="crm" description="CRM服务器配置">
+		<item name="gateway" value="" description="CRM网关列表，可以指定多个，用|分隔开" />
+		<item name="scanInterval" value="20000" description="CRM状态扫描间隔时间，单位毫秒" />
+	</category>
+
+</system>
+

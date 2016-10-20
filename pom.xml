@@ -1,0 +1,261 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>thinkive.base</groupId>
+    <artifactId>thinkive-StockOption</artifactId>
+    <version>1.2.1-SNAPSHOT</version>
+
+    <!-- 从这里开始复制到文件末尾 -->
+    <properties>
+        <repositories.url>http://192.168.1.99:8081/nexus/content/groups/public</repositories.url>
+        <releases.url>http://192.168.1.99:8081/nexus/content/repositories/releases</releases.url>
+        <snapshots.url>http://192.168.1.99:8081/nexus/content/repositories/snapshots</snapshots.url>
+        <svn.url>
+            svn://192.168.1.95/YF1/%E5%B9%B3%E5%8F%B0%E7%B1%BB/java/%E8%A1%8C%E6%83%85%E7%B1%BB/code
+        </svn.url>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>thinkive.base</groupId>
+            <artifactId>thinkive-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>thinkive.base</groupId>
+            <artifactId>thinkive-timer</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>thinkive.base</groupId>
+            <artifactId>thinkive-dbf</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-xml</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-continuation</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-http</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-io</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-websocket</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-security</artifactId>
+            <version>8.0.4.v20111024</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>thinkive.other</groupId>
+            <artifactId>ojdbc12</artifactId>
+            <version>10.2.0.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+    </dependencies>
+    <!-- 以上为普通配置区 -->
+
+    <!-- 以下为高级配置区 -->
+    <repositories>
+        <repository>
+            <id>thinkive</id>
+            <url>${repositories.url}</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Public Plugin Repositories of Thinkive</id>
+            <url>${repositories.url}</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <!-- 自动配合SVN进行版本发布 -->
+            <!-- 发布版本插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <tagBase>${svn.url}/${project.artifactId}/tags/</tagBase>
+                    <branchBase>${svn.url}/${project.artifactId}/branches/</branchBase>
+                </configuration>
+            </plugin>
+            <!-- 生成HTML文件插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <outputEncoding>GBK</outputEncoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <!--<defaultLibBundleDir>lib</defaultLibBundleDir>-->
+                    <source>1.6</source> <!-- 源代码使用的开发版本 -->
+                    <target>1.6</target> <!-- 需要生成的目标class文件的编译版本 -->
+                    <encoding>GBK</encoding>
+                </configuration>
+            </plugin>
+            <!-- 资源文件管理插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>GBK</encoding>
+                </configuration>
+            </plugin>
+            <!-- 测试插件(surefire) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dfile.encoding=GBK</argLine>
+                    <!--<encoding>GBK</encoding>-->
+                </configuration>
+            </plugin>
+            <!-- 生成源码插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <encoding>GBK</encoding>
+                </configuration>
+            </plugin>
+            <!-- 自动配合SVN进行版本发布 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.8.1</version>
+            </plugin>
+
+
+            <!-- jetty设置 -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <configuration>
+                    <contextPath>/</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>9097</port>
+                        </connector>
+                    </connectors>
+                    <reload>automatic</reload>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>org.mortbay.util.URI.charset</name>
+                            <value>GBK</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>公司产品release包</name>
+            <url>${releases.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>公司产品snapshot包</name>
+            <url>${snapshots.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <scm>
+        <developerConnection>scm:svn:${svn.url}/${project.artifactId}/trunk</developerConnection>
+    </scm>
+</project>
+        <!-- 复制到这里结束 -->

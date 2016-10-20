@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- id 为行情任务标识 task-name 名称 description 说明 task-class 实现类 task-type 初始化类型：0、系统任务，系统启动初始化 1、同步初始化 2、异步线程初始化 初始化顺序为当前任务列表顺序 
+	task-begintime 开始时间 task-endtime 结束时间 当去掉结束时间项则表示永不停止 task-interval 更新间隔（单位：毫秒） -->
+<tasks>
+	<task id="StateCheckTask">
+		<task-name>转码机连接检测任务</task-name>
+		<description>转码机连接检测</description>
+		<task-type>0</task-type>
+		<task-class>com.thinkive.market.service.works.task.StateCheckTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-interval>30000</task-interval>
+	</task>
+	<task id="InitCheckTask">
+		<task-name>系统初始化检测任务</task-name>
+		<description>系统初始化检测</description>
+		<task-type>0</task-type>
+		<task-class>com.thinkive.market.service.works.task.InitCheckTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-interval>6000</task-interval>
+	</task>
+
+	<task id="BaseInfoTask">
+		<task-name>个股期权基础数据</task-name>
+		<description>个股期权基础数据更新</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.BaseInfoTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-endtime>23:59</task-endtime>
+		<task-interval>1000000</task-interval>
+	</task>
+	<task id="SSHQTask">
+		<task-name>个股期权实时数据</task-name>
+		<description>个股期权实时数据</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.SSHQTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-endtime>23:59</task-endtime>
+		<task-interval>5000</task-interval>
+	</task>
+
+	<task id="ActiveSortTask">
+		<task-name>个股期权主动排序</task-name>
+		<description>个股期权主动排序</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.ActiveSortTask
+		</task-class>
+		<task-begintime>07:00</task-begintime>
+		<task-endtime>23:00</task-endtime>
+		<task-interval>3000</task-interval>
+	</task>
+	<task id="MinuteTask">
+		<task-name>个股期权分时数据更新</task-name>
+		<description>个股期权分时数据更新</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.MinuteTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-endtime>23:59</task-endtime>
+		<task-interval>3000</task-interval>
+	</task>
+	<task id="DealDataTask">
+		<task-name>个股期权成交明细更新</task-name>
+		<description>个股期权成交明细更新</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.DealDataTask
+		</task-class>
+		<task-begintime>08:00</task-begintime>
+		<task-endtime>17:00</task-endtime>
+		<task-interval>3000</task-interval>
+	</task>
+	<task id="KLineTask">
+		<task-name>个股期权日线数据更新</task-name>
+		<description>个股期权日线数据更新</description>
+		<task-type>1</task-type>
+		<task-class>com.thinkive.market.service.works.task.KLineTask
+		</task-class>
+		<task-begintime>00:00</task-begintime>
+		<task-endtime>23:59</task-endtime>
+		<task-interval>3000</task-interval>
+		<task-param>{"MA":[5,10,20,30,60]}</task-param>
+	</task>
+</tasks>
+
