@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>thinkive.base</groupId>
     <artifactId>thinkive-StockOption</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.3.3-SNAPSHOT</version>
 
     <!-- 从这里开始复制到文件末尾 -->
     <properties>
@@ -25,13 +25,18 @@
         </dependency>
         <dependency>
             <groupId>thinkive.base</groupId>
-            <artifactId>thinkive-redis</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>thinkive.base</groupId>
             <artifactId>thinkive-timer</artifactId>
             <version>1.0.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mail</artifactId>
+                    <groupId>javax.mail</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>activation</artifactId>
+                    <groupId>javax.activation</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>thinkive.base</groupId>

@@ -10,13 +10,9 @@ package com.thinkive.server;
  * 创建日期: 2012-10-29
  * 创建时间: 15:30:10
  */
-public interface Function
-{
+public interface Function {
     /**
      * 服务接口方法
-     *
-     * @param request
-     * @param response
      */
     public void service(Request request, Response response);
 }

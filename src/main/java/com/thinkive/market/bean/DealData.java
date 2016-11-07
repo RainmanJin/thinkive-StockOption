@@ -9,18 +9,17 @@ package com.thinkive.market.bean;
  * 创建日期: 2015-1-16
  * 创建时间: 17:00:51
  */
-public class DealData
-{
+public class DealData {
     //private int stktype;     //股票类型
     //private String market;     //市场代码
     //private String code;     //股票代码
-   // private String name;     //股票名称
+    // private String name;     //股票名称
 
     private short minute;    //分钟数
     private float now;       //现价
     private int thedeal;     //成交量
     private int flag;        //买卖标志
-private float yesterday;
+    private float yesterday;
 
    /* public int getStktype()
     {
@@ -53,60 +52,52 @@ private float yesterday;
     }
 */
 
-    public short getMinute()
-    {
+    public short getMinute() {
         return minute;
     }
 
-    public void setMinute(short minute)
-    {
+    public void setMinute(short minute) {
         this.minute = minute;
     }
 
-    public float getNow()
-    {
+    public float getNow() {
         return now;
     }
 
-    public void setNow(float now)
-    {
+    public void setNow(float now) {
         this.now = now;
     }
 
-    public int getThedeal()
-    {
+    public int getThedeal() {
         return thedeal;
     }
 
-    public void setThedeal(int thedeal)
-    {
+    public void setThedeal(int thedeal) {
         this.thedeal = thedeal;
     }
 
-    public int getFlag()
-    {
+    public int getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag)
-    {
+    public void setFlag(int flag) {
         this.flag = flag;
     }
 
-	public float getYesterday() {
-		return yesterday;
-	}
+    public float getYesterday() {
+        return yesterday;
+    }
 
-	public void setYesterday(float yesterday) {
-		this.yesterday = yesterday;
-	}
+    public void setYesterday(float yesterday) {
+        this.yesterday = yesterday;
+    }
 
 
 	
 
 	
 	/*public String getMarket()
-	{
+    {
 		return market;
 	}
 

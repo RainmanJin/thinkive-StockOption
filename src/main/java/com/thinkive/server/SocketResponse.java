@@ -1,8 +1,8 @@
 package com.thinkive.server;
 
-import java.nio.channels.SocketChannel;
-import java.nio.ByteBuffer;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 
 /**
  * 描述:  用于向客户端发送数据
@@ -13,17 +13,13 @@ import java.io.IOException;
  * 创建日期: 2007-3-28
  * 创建时间: 10:32:56
  */
-public class SocketResponse
-{
+public class SocketResponse {
     private SocketChannel client;
 
     /**
      * 构造响应对象
-     *
-     * @param client
      */
-    public SocketResponse(SocketChannel client)
-    {
+    public SocketResponse(SocketChannel client) {
         this.client = client;
     }
 
@@ -32,8 +28,7 @@ public class SocketResponse
      *
      * @param data byte[]　待回应数据
      */
-    public void write(byte[] data) throws IOException
-    {
+    public void write(byte[] data) throws IOException {
         /*
         ByteBuffer buffer = ByteBuffer.allocate(data.length);
         buffer.put(data, 0, data.length);
@@ -42,8 +37,7 @@ public class SocketResponse
         ByteBuffer buffer = ByteBuffer.wrap(data);
         buffer.flip();
         //可能一次不能发送完，所以要进行循环，直到数据发送完成
-        while (buffer.hasRemaining())
-        {
+        while (buffer.hasRemaining()) {
             client.write(buffer);
         }
         //buffer.clear();
@@ -53,15 +47,11 @@ public class SocketResponse
      * 向客户端写数据
      *
      * @param buffer 数据缓冲区
-     * @throws IOException
      */
-    public void write(ByteBuffer buffer) throws IOException
-    {
-        synchronized (client)
-        {
+    public void write(ByteBuffer buffer) throws IOException {
+        synchronized (client) {
             //可能一次不能发送完，所以要进行循环，直到数据发送完成
-            while (buffer.hasRemaining())
-            {
+            while (buffer.hasRemaining()) {
                 client.write(buffer);
             }
         }

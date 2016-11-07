@@ -1,108 +1,85 @@
 package com.thinkive.market.service.works.task;
 
+import com.thinkive.market.bean.StockOption;
+import com.thinkive.market.service.cache.HQDataCache;
+import com.thinkive.market.service.dao.ThinkConvDao;
+
+import org.apache.log4j.Logger;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
-
-import com.thinkive.base.config.Configuration;
-import com.thinkive.market.bean.StockOption;
-import com.thinkive.market.service.cache.HQDataCache;
-import com.thinkive.market.service.cache.HQStateCache;
-import com.thinkive.market.service.dao.ThinkConvDao;
-
 /**
  * @描述: 个股期权分时数据处理
- * @版权: Copyright (c) 2012 
- * @公司: 思迪科技 
+ * @版权: Copyright (c) 2012
+ * @公司: 思迪科技
  * @作者: 熊攀
- * @版本: 1.0 
+ * @版本: 1.0
  * @创建日期: 2015-1-17
  * @创建时间: 下午11:35:39
  */
-public class MinuteTask extends BaseConvTask
-{
-	private static Logger		logger		= Logger.getLogger("MinuteTask");
-											
-	public static final String	MINUTE_DATA	= "minutedata";
-											
-	//测试分时数据   从c网关拉取
-	public static void main(String[] args)
-	{
-		ThinkConvDao convDao = null;
-		convDao = new ThinkConvDao(false);
-		String market = "0";
-		String stockCode = "11000001";
-		try
-		{
-			//List minuteHq = 
-			convDao.queryMinuteData(stockCode, market, 0);
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			if ( convDao != null )
-			{
-				convDao.close();
-			}
-		}
-	}
-	
-	@Override
-	public void init(String param)
-	{
-		//如果为空则需要初始化分时图
-		ThinkConvDao convDao = null;
-		try
-		{	
-			convDao = new ThinkConvDao(false);
-			Map minuteMap = (Map) HQDataCache.getData(MINUTE_DATA);
-			minuteMap = new ConcurrentHashMap();
-			logger.info("个股期权分时图数据开始初始化-------");
-			StockOption[] stockOptionArray = HQDataCache.getStockOptionArray();
-			if ( null != stockOptionArray && stockOptionArray.length > 0 )
-			{
-				for (int i = 0; i < stockOptionArray.length; i++)
-				{
-					String stockCode = stockOptionArray[i].getSecurityID();
-					String market = stockOptionArray[i].getMarket();
-					
-					List minuteHq = convDao.queryMinuteData(stockCode, market, 0);
-					minuteMap.put(market + stockCode, minuteHq);
-				}
-			}
-			else
-			{
-				logger.warn("个股期权列表stockOptionArray为空！！！");
-			}
-			
-			HQDataCache.setData(MINUTE_DATA, minuteMap);
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			logger.warn("ThinkConvDao转码机连接异常！！！");
-		}
-		finally
-		{
-			if ( convDao != null )
-			{
-				convDao.close();
-			}
-		}
-		
-	}
-	
-	@Override
-	public void update() throws Exception
-	{
-		/*
-		if ( !HQStateCache.isNeedUpdate() )
+public class MinuteTask extends BaseConvTask {
+    public static final String MINUTE_DATA = "minutedata";
+    private static Logger logger = Logger.getLogger("MinuteTask");
+
+    //测试分时数据   从c网关拉取
+    public static void main(String[] args) {
+        ThinkConvDao convDao = null;
+        convDao = new ThinkConvDao(false);
+        String market = "0";
+        String stockCode = "11000001";
+        try {
+            //List minuteHq =
+            convDao.queryMinuteData(stockCode, market, 0);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            if (convDao != null) {
+                convDao.close();
+            }
+        }
+    }
+
+    @Override
+    public void init(String param) {
+        //如果为空则需要初始化分时图
+        ThinkConvDao convDao = null;
+        try {
+            convDao = new ThinkConvDao(false);
+            Map minuteMap = (Map) HQDataCache.getData(MINUTE_DATA);
+            minuteMap = new ConcurrentHashMap();
+            logger.info("个股期权分时图数据开始初始化-------");
+            StockOption[] stockOptionArray = HQDataCache.getStockOptionArray();
+            if (null != stockOptionArray && stockOptionArray.length > 0) {
+                for (int i = 0; i < stockOptionArray.length; i++) {
+                    String stockCode = stockOptionArray[i].getSecurityID();
+                    String market = stockOptionArray[i].getMarket();
+
+                    List minuteHq = convDao.queryMinuteData(stockCode, market, 0);
+                    minuteMap.put(market + stockCode, minuteHq);
+                }
+            } else {
+                logger.warn("个股期权列表stockOptionArray为空！！！");
+            }
+
+            HQDataCache.setData(MINUTE_DATA, minuteMap);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            logger.warn("ThinkConvDao转码机连接异常！！！");
+        } finally {
+            if (convDao != null) {
+                convDao.close();
+            }
+        }
+
+    }
+
+    @Override
+    public void update() throws Exception {
+        /*
+        if ( !HQStateCache.isNeedUpdate() )
 		{
 			return;
 		}
@@ -169,12 +146,12 @@ public class MinuteTask extends BaseConvTask
 			}
 		}
 		
-		*/}
-		
-	@Override
-	public void clear()
-	{
-		HQDataCache.setData(MINUTE_DATA, null);
-	}
-	
+		*/
+    }
+
+    @Override
+    public void clear() {
+        HQDataCache.setData(MINUTE_DATA, null);
+    }
+
 }

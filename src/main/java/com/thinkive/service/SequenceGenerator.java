@@ -4,11 +4,11 @@
 
 package com.thinkive.service;
 
-import org.apache.log4j.Logger;
+import com.thinkive.base.jdbc.DataRow;
 import com.thinkive.base.jdbc.session.Session;
 import com.thinkive.base.jdbc.session.SessionFactory;
-import com.thinkive.base.jdbc.DataRow;
-import com.thinkive.service.Constants;
+
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -21,34 +21,29 @@ import java.util.ArrayList;
  * 创建日期: 2006-11-28
  * 创建时间: 13:58:41
  */
-public class SequenceGenerator
-{
+public class SequenceGenerator {
     private static SequenceGenerator instance = new SequenceGenerator();
     private static Logger logger = Logger.getLogger(SequenceGenerator.class);
     //private static String SEQSTARTS = "GSS";
 
 
-    private SequenceGenerator()
-    {
+    private SequenceGenerator() {
     }
 
 
-    public static SequenceGenerator getInstance()
-    {
+    public static SequenceGenerator getInstance() {
         return instance;
     }
 
-    public String getSeqValue(String seqName)
-    {
+    public String getSeqValue(String seqName) {
         if (seqName == null || seqName.equals(""))
             return "";
 
         Session session = null;
-        try
-        {
+        try {
             session = SessionFactory.getSession(Constants.SERVICE_DB_CONN_ID);
             session.beginTrans();
-            seqName=seqName.toUpperCase();
+            seqName = seqName.toUpperCase();
             ArrayList argList = new ArrayList();
             argList.add(seqName);
             session.update("update T_SEQUENCE set CURRENT_VALUE=CURRENT_VALUE+1 where NAME=?", argList.toArray());
@@ -60,8 +55,7 @@ public class SequenceGenerator
             long min = dataRow.getLong("start_value");
             long value = dataRow.getLong("current_value");
 
-            if (value >= max)
-            {
+            if (value >= max) {
                 argList.clear();
                 argList.add(new Long(min));
                 argList.add(seqName);
@@ -71,18 +65,12 @@ public class SequenceGenerator
             session.commitTrans();
             //return SEQSTARTS + value;
             return "" + value;
-        }
-        catch (Exception e)
-        {
-            if (session != null)
-            {
+        } catch (Exception e) {
+            if (session != null) {
                 session.rollbackTrans();
             }
-        }
-        finally
-        {
-            if (session != null)
-            {
+        } finally {
+            if (session != null) {
                 session.close();
                 session = null;
             }

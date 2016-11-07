@@ -1,8 +1,8 @@
 package com.thinkive.market.common;
 
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 描述:
@@ -13,8 +13,7 @@ import java.util.HashMap;
  * 创建日期: 2009-1-9
  * 创建时间: 15:03:48
  */
-public class Context
-{
+public class Context {
     //流水号
     private int flowNo = 0;
 
@@ -27,144 +26,99 @@ public class Context
     //存储数据缓冲区
     private byte[] resultData = new byte[0];
 
-    public Context()
-    {
-    }
-
-    /**
-     * 设置流水号码
-     *
-     * @param flowNo
-     */
-    public void setFlowNo(int flowNo)
-    {
-        this.flowNo = flowNo;
+    public Context() {
     }
 
     /**
      * 获得流水号码
-     *
-     * @return
      */
-    public int getFlowNo()
-    {
+    public int getFlowNo() {
         return flowNo;
     }
 
     /**
-     * 设置功能号码
-     *
-     * @param funcNo
+     * 设置流水号码
      */
-    public void setFuncNo(int funcNo)
-    {
-        this.funcNo = funcNo;
+    public void setFlowNo(int flowNo) {
+        this.flowNo = flowNo;
     }
 
     /**
      * 获得功能号码
-     *
-     * @return
      */
-    public int getFuncNo()
-    {
+    public int getFuncNo() {
         return funcNo;
     }
 
     /**
-     * 添加请求参数
-     *
-     * @param name
-     * @param value
+     * 设置功能号码
      */
-    public void addParameter(String name, String value)
-    {
-        params.put(name, value);
+    public void setFuncNo(int funcNo) {
+        this.funcNo = funcNo;
     }
 
     /**
-     * 设置返回数据
-     *
-     * @param data
+     * 添加请求参数
      */
-    public void setResultData(byte[] data)
-    {
-        this.resultData = data;
+    public void addParameter(String name, String value) {
+        params.put(name, value);
     }
 
     /**
      * 获得返回数据
      */
-    public byte[] getResultData()
-    {
+    public byte[] getResultData() {
         return resultData;
     }
 
     /**
-     * 获得请求参数
-     *
-     * @param name
-     * @return
+     * 设置返回数据
      */
-    public String getStrParameter(String name)
-    {
+    public void setResultData(byte[] data) {
+        this.resultData = data;
+    }
+
+    /**
+     * 获得请求参数
+     */
+    public String getStrParameter(String name) {
         String value = (String) params.get(name);
         return (value == null) ? "" : value;
     }
 
     /**
      * 获得请求参数
-     *
-     * @param name
-     * @param defaultValue
-     * @return
      */
-    public String getStrParameter(String name, String defaultValue)
-    {
+    public String getStrParameter(String name, String defaultValue) {
         String value = getStrParameter(name);
         return (value.length() == 0) ? defaultValue : value;
     }
 
     /**
      * 获得整型参数
-     *
-     * @param name
-     * @return
      */
-    public int getIntParameter(String name)
-    {
+    public int getIntParameter(String name) {
         String value = getStrParameter(name);
-        try
-        {
+        try {
             return Integer.parseInt(value);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             return 0;
         }
     }
 
     /**
      * 获得整型参数
-     *
-     * @param name
-     * @param defaultValue
-     * @return
      */
-    public int getIntParameter(String name, int defaultValue)
-    {
+    public int getIntParameter(String name, int defaultValue) {
         String value = (String) params.get(name);
         if (value == null) //不存在
         {
             return defaultValue;
         }
 
-        try
-        {
+        try {
             return Integer.parseInt(value);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             return 0;
         }
     }

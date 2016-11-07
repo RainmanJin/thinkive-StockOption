@@ -9,23 +9,20 @@ package com.thinkive.server.inner;
  * 创建日期: 2011-6-21
  * 创建时间: 9:51:17
  */
-public class Message
-{
+public class Message {
     //数据包内容
     private byte[] buffer = new byte[0];
 
 
-    public byte[] getBuffer()
-    {
+    public byte[] getBuffer() {
         return buffer;
     }
-    public void setBuffer(byte[] buffer)
-    {
+
+    public void setBuffer(byte[] buffer) {
         this.buffer = buffer;
     }
 
-    public void clear()
-    {
+    public void clear() {
         buffer = null;
     }
 

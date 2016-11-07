@@ -4,11 +4,9 @@
 
 package com.thinkive.service;
 
-import java.util.ArrayList;
-
+import com.thinkive.base.jdbc.JdbcTemplate;
 import com.thinkive.base.jdbc.session.Session;
 import com.thinkive.base.jdbc.session.SessionFactory;
-import com.thinkive.base.jdbc.JdbcTemplate;
 
 /**
  * 描述:
@@ -19,16 +17,13 @@ import com.thinkive.base.jdbc.JdbcTemplate;
  * 创建日期: 2006-11-28
  * 创建时间: 15:01:02
  */
-public class BaseService
-{
+public class BaseService {
     /**
      * 返回根据datasource.xml文件中配置数据源ID，得到的会话对象
      *
      * @param id 数据源ID
-     * @return
      */
-    public Session getSession(String id)
-    {
+    public Session getSession(String id) {
         return SessionFactory.getSession(id);
     }
 
@@ -37,18 +32,14 @@ public class BaseService
      *
      * @param id 数据源的ID
      */
-    public JdbcTemplate getJdbcTemplate(String id)
-    {
+    public JdbcTemplate getJdbcTemplate(String id) {
         return new JdbcTemplate(id);
     }
 
     /**
      * 返回缺省数据源操作对象
-     *
-     * @return
      */
-    public JdbcTemplate getJdbcTemplate()
-    {
+    public JdbcTemplate getJdbcTemplate() {
         return new JdbcTemplate();
     }
 }

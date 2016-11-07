@@ -9,22 +9,17 @@ package com.thinkive.common.system;
  * 创建日期: 2006-11-18
  * 创建时间: 17:04:22
  */
-public class Application
-{
+public class Application {
     private static String rootPath = "";
 
     /**
      * 获得当前应用程序的根目录的路径
-     *
-     * @return
      */
-    public static String getRootPath()
-    {
+    public static String getRootPath() {
         return rootPath;
     }
 
-    public static void setRootPath(String rootPath)
-    {
+    public static void setRootPath(String rootPath) {
         Application.rootPath = rootPath;
     }
 }

@@ -13,8 +13,7 @@ import com.thinkive.server.SocketResponse;
  * 创建日期: 2007-3-28
  * 创建时间: 10:32:56
  */
-public interface ServerListener
-{
+public interface ServerListener {
 
     /**
      * 服务器端处理产生错误时触发本事件
@@ -37,8 +36,6 @@ public interface ServerListener
 
     /**
      * 当客户端已经连接成功时，触发此事件
-     *
-     * @param request
      */
     public void onConnected(SocketRequest request);
 

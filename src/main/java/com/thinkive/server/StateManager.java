@@ -13,8 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 创建日期: 2011-9-8
  * 创建时间: 10:49:17
  */
-public class StateManager
-{
+public class StateManager {
     //中心服务器是否运行
     private static boolean isCenterServerRuning = false;
 
@@ -26,49 +25,36 @@ public class StateManager
 
     /**
      * 中心服务器是否正在运行
-     *
-     * @return
      */
-    public static boolean isCenterServerRuning()
-    {
+    public static boolean isCenterServerRuning() {
         return isCenterServerRuning;
     }
 
     /**
      * 设置中心服务器是否正在运行
-     *
-     * @param isRuning
      */
-    public static void setCenterServerRuning(boolean isRuning)
-    {
+    public static void setCenterServerRuning(boolean isRuning) {
         StateManager.isCenterServerRuning = isRuning;
     }
 
     /**
      * 获取当前连接的客户集合
-     *
-     * @return
      */
-    public static Map<SocketChannel, SocketClient> getClientChannelMap()
-    {
+    public static Map<SocketChannel, SocketClient> getClientChannelMap() {
         return clientChannelMap;
     }
 
     /**
      * 获得当前连接的客户端数量
-     *
-     * @return
      */
-    public static int getClientCount()
-    {
+    public static int getClientCount() {
         return clientChannelMap.size();
     }
 
     /**
      * 获取当前连接的客户集合
      */
-    public static Map<String, SocketClient> getClientKeyMap()
-    {
+    public static Map<String, SocketClient> getClientKeyMap() {
         return clientKeyMap;
     }
 

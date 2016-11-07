@@ -9,28 +9,23 @@ package com.thinkive.market.common;
  * 创建日期: 2009-1-9
  * 创建时间: 17:29:18
  */
-public class InvokeException extends Exception
-{
-    public InvokeException()
-    {
+public class InvokeException extends Exception {
+    public InvokeException() {
         super();
     }
 
 
-    public InvokeException(String message)
-    {
+    public InvokeException(String message) {
         super(message);
     }
 
 
-    public InvokeException(String message, Throwable cause)
-    {
+    public InvokeException(String message, Throwable cause) {
         super(message, cause);
     }
 
 
-    public InvokeException(Throwable cause)
-    {
+    public InvokeException(Throwable cause) {
         super(cause);
     }
 }

@@ -6,8 +6,8 @@
 	</category>
 
 	<category name="thinkconv" description="转码机服务器配置">
-		<item name="host" value="192.168.3.219:26007" description="转码机地址及端口连接地址" />
-		<item name="pushhost" value="192.168.3.219:26008" description="转码机地址及推送端口连接地址" />
+		<item name="host" value="61.138.203.11:26007" description="转码机地址及端口连接地址" />
+		<item name="pushhost" value="61.138.203.11:26008" description="转码机地址及推送端口连接地址" />
 		<item name="timeout" value="120000" description="连接超时设置（毫秒）" />
 	</category>
 

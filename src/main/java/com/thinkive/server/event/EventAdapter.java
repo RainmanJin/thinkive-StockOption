@@ -13,35 +13,27 @@ import com.thinkive.server.SocketResponse;
  * 创建日期: 2007-3-28
  * 创建时间: 10:32:56
  */
-public class EventAdapter implements ServerListener
-{
-    public EventAdapter()
-    {
+public class EventAdapter implements ServerListener {
+    public EventAdapter() {
     }
 
-    public void onError(String error)
-    {
+    public void onError(String error) {
     }
 
-    public void onAccept()
-    {
+    public void onAccept() {
     }
 
-    public void onAccepted(SocketRequest request)
-    {
+    public void onAccepted(SocketRequest request) {
     }
 
-    public void onConnected(SocketRequest request)
-    {
+    public void onConnected(SocketRequest request) {
 
     }
 
-    public void onDataArrival(SocketRequest request, SocketResponse response)
-    {
+    public void onDataArrival(SocketRequest request, SocketResponse response) {
 
     }
 
-    public void onClosed(SocketRequest request)
-    {
+    public void onClosed(SocketRequest request) {
     }
 }

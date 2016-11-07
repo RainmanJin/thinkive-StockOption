@@ -6,7 +6,12 @@ package com.thinkive.common.web.filter;
 
 import org.apache.log4j.Logger;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 /**
  * 描述:
@@ -17,8 +22,7 @@ import javax.servlet.*;
  * 创建日期: 2006-10-11
  * 创建时间: 10:47:40
  */
-public class SetCharacterEncodingFilter implements Filter
-{
+public class SetCharacterEncodingFilter implements Filter {
     private static Logger logger = Logger.getLogger(SetCharacterEncodingFilter.class);
 
     protected String encoding = null;
@@ -27,8 +31,7 @@ public class SetCharacterEncodingFilter implements Filter
 
     protected boolean ignore = true;
 
-    public void destroy()
-    {
+    public void destroy() {
         if (logger.isInfoEnabled())
             logger.info("SetCharacterEncodingFilter destroy ----------");
         this.encoding = null;
@@ -36,32 +39,25 @@ public class SetCharacterEncodingFilter implements Filter
     }
 
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-    {
-        try
-        {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
+        try {
             // Conditionally select and set the character encoding to be used
-            if (ignore || (request.getCharacterEncoding() == null))
-            {
+            if (ignore || (request.getCharacterEncoding() == null)) {
                 String encoding = selectEncoding(request);
-                if (encoding != null)
-                {
+                if (encoding != null) {
                     request.setCharacterEncoding(encoding);
                     response.setContentType("text/html; charset=" + encoding);
                 }
             }
 
             chain.doFilter(request, response);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
 
-    public void init(FilterConfig filterConfig) throws ServletException
-    {
+    public void init(FilterConfig filterConfig) throws ServletException {
         if (logger.isInfoEnabled())
             logger.info("SetCharacterEncodingFilter init ----------");
 
@@ -78,8 +74,7 @@ public class SetCharacterEncodingFilter implements Filter
             this.ignore = false;
     }
 
-    protected String selectEncoding(ServletRequest request)
-    {
+    protected String selectEncoding(ServletRequest request) {
         return (this.encoding);
     }
 
